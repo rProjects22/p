@@ -1,0 +1,249 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red174\green176\blue183;\red23\green23\blue26;\red164\green160\blue78;
+\red195\green123\blue90;\red71\green149\blue242;\red185\green101\blue173;\red89\green158\blue96;\red103\green107\blue114;
+\red38\green157\blue169;}
+{\*\expandedcolortbl;;\csgenericrgb\c68235\c69020\c71765;\csgenericrgb\c9020\c9020\c10196;\csgenericrgb\c64314\c62745\c30588;
+\csgenericrgb\c76471\c48235\c35294;\csgenericrgb\c27843\c58431\c94902;\csgenericrgb\c72549\c39608\c67843;\csgenericrgb\c34902\c61961\c37647;\csgenericrgb\c40392\c41961\c44706;
+\csgenericrgb\c14902\c61569\c66275;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #PACKAGE STAGE \
+\
+FROM openjdk:17-alpine \
+RUN mkdir /app\
+Copy \'97from=builder /home/gradle/src/build/libs/*.jar  /app/product-service.jar\
+\
+ENV MONGO_DB_USERNAME=mongoadmin \\\
+	MONGO_DB_PWD=password\
+\
+EXPOSE 8084\
+\
+ENTRYPOINT [\'93java\'94, \'93-jar\'94, \'93/app/product-service.jar\'94]\
+\
+I want to create the image version of my product service then I want to containerize it.\
+\
+When you run your docker file you need to run your image in that folder\
+\
+\
+Docker-compose.yml : \
+	version: \'913.8\'92\
+	services:\
+		product-service:\
+			image: product-service(name of your image and just make sure that its matching your image name in your docker)\
+			ports:\
+				- \'938084:8084\'94\
+			build: (it rebuilds the product-service image when code is changed)\
+				context: ./product-service\
+				docker file: ./Dockerfile\
+				(any changes in the code results in recreating the image)\
+(Issuing a docker compose command to recreate)\
+				container_name: product-service //container name \
+				environment:\
+					SPRING_PROFILES_ACTIVE: docker\
+Even your application has act as a client to your database \
+These are not production environment properties(application properties file)\
+				depends_on: (what this do is, we tell it that it depends on mongodb so bring it on first)\
+					-mongodb \
+				networks:\
+					-spring\
+		mongodb:\
+			images:mongo:latest(you shouldn\'92t be using the latest in real life bc you want something stable)\
+Application-docker.properties: \
+//the properties that changed compared to application properties\
+	spring.data.mongodb.host=mongodb\
+	server.port=8084\
+\
+\
+	volumes: (he copied the path and mapping path to the host machine from the slides )\
+(containers when shut looses the data, the containers that run databases need the data to persists, so when we shut and its up again we want the database, so we are going to mapping a host drive, relative to my host machine create a folder and map that folder to mongodb container.)\
+Linux is very popular with initializing scripts.\
+(Mongo executes this script when its back up)\
+\
+	container-name: mongodb//container name\
+	restart: unless-stopped \
+	command: MongoDB \'97auth\
+	networks: \
+		-spring \
+Mongo-express(indentation is same line with version and services)\
+	image: mongo-express\
+	ports:\
+		-8081:8081\
+	environments: \
+\
+\
+\
+Mongo.-nit.js:\
+Print(\'92START\'92);\
+Db = db.getSiblingDB(\'91\'92product-service)\
+\
+Db.createUser(\
+	\{\
+		user: \'91rootadmin\'92\
+		pwd: pss \
+		roles: [\{roles: \'91\'92readWrite\}, db: \'91\'92product-service],\
+\}\
+);\
+\
+print(\'91END\'92) \
+\
+\
+\
+Terminal\'97>. Docker-compose -p micro-services-comp3095 -f docker-compose.yml up(up my docker) -d(detach it from my terminal)\
+\
+Delete the image if you changed your code, just to make sure\
+\
+DELETE THE PRODUCT, GO TO GET AND SHOW THAT THE DATABASE IS EMPTY, MAKE SURE TO SHOW IT ON THE VIDEO ON POSTMAN \
+\
+PROVE THAT YOUR CONTAINERS ARE WORKING \
+POSTMAN AND YOUR TEST IS PASSED.\
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\fs26 \cf2 \cb3     
+\f1 \cf4 @Test\
+    \cf5 void \cf6 getAllProduct\cf2 () \cf5 throws \cf2 Exception\{\
+\
+        \cf7 productRepository\cf2 .saveAll(getProductList());\
+\
+        ResultActions response = \cf7 mockMvc\cf2 .perform(MockMvcRequestBuilders\
+                .
+\f2\i get
+\f1\i0 (\cf8 "/api/product"\cf2 )\
+                .accept(MediaType.
+\f2\i \cf7 APPLICATION_JSON
+\f1\i0 \cf2 ));\
+\
+\
+        response.andExpect(MockMvcResultMatchers.
+\f2\i status
+\f1\i0 ().isOk());\
+        \cf9 //response.andDo(MockMvcResultHandlers.print());\
+\
+        \cf2 MvcResult result = response.andReturn();\
+        String jsonResponse = result.getResponse().getContentAsString();\
+        JsonNode jsonNodes = \cf5 new \cf2 ObjectMapper().readTree(jsonResponse);\
+\
+        \cf5 int \cf2 actualSize = jsonNodes.size();\
+        \cf5 int \cf2 expectedSize = getProductList().size();\
+\
+        Assertions.
+\f2\i assertEquals
+\f1\i0 (expectedSize,actualSize);\
+\
+\
+    \}\
+\
+    \cf4 @Test\
+    \cf5 void \cf6 updateProduct\cf2 () \cf5 throws \cf2 Exception\{\
+        Product p =  Product.
+\f2\i builder
+\f1\i0 ()\
+                .Id(UUID.
+\f2\i randomUUID
+\f1\i0 ().toString())\
+                .name(\cf8 "Apple"\cf2 )\
+                .description(\cf8 "Iphone"\cf2 )\
+                .price(BigDecimal.
+\f2\i valueOf
+\f1\i0 (\cf10 100\cf2 ))\
+                .build();\
+\
+        \cf7 productRepository\cf2 .save(p);\
+\
+        p.setPrice(BigDecimal.
+\f2\i valueOf
+\f1\i0 (\cf10 200\cf2 ));\
+        String productRequestString = \cf7 objectMapper\cf2 .writeValueAsString(p);\
+\
+        ResultActions response = \cf7 mockMvc\cf2 .perform(MockMvcRequestBuilders\
+                .
+\f2\i put
+\f1\i0 (\cf8 "/api/product/" \cf2 + p.getId().toString())\
+                .contentType(MediaType.
+\f2\i \cf7 APPLICATION_JSON
+\f1\i0 \cf2 )\
+                .content(productRequestString));\
+\
+\
+        response.andExpect(MockMvcResultMatchers.
+\f2\i status
+\f1\i0 ().isNoContent());\
+        response.andDo(MockMvcResultHandlers.
+\f2\i print
+\f1\i0 ());\
+\
+        Query q = \cf5 new \cf2 Query();\
+\
+        q.addCriteria(Criteria.
+\f2\i where
+\f1\i0 (\cf8 "Id"\cf2 ).is(p.getId()));\
+        Product storedProduct = \cf7 mongoTemplate\cf2 .findOne(q,Product.\cf5 class\cf2 );\
+\
+        Assertions.
+\f2\i assertEquals
+\f1\i0 (p.getPrice(), storedProduct.getPrice());\
+\
+\
+    \}\
+\
+    \cf4 @Test\
+    \cf5 void \cf6 deleteProduct\cf2 () \cf5 throws \cf2 Exception\{\
+        \cf9 //Given\
+        \cf2 Product p =  Product.
+\f2\i builder
+\f1\i0 ()\
+                .Id(UUID.
+\f2\i randomUUID
+\f1\i0 ().toString())\
+                .name(\cf8 "Sam"\cf2 )\
+                .description(\cf8 "Mobile"\cf2 )\
+                .price(BigDecimal.
+\f2\i valueOf
+\f1\i0 (\cf10 900\cf2 ))\
+                .build();\
+        \cf7 productRepository\cf2 .save(p);\
+\
+        \cf9 //WHEN\
+        \cf2 ResultActions response = \cf7 mockMvc\cf2 .perform(MockMvcRequestBuilders\
+                .
+\f2\i delete
+\f1\i0 (\cf8 "/api/product/" \cf2 + p.getId().toString())\
+                .contentType(MediaType.
+\f2\i \cf7 APPLICATION_JSON
+\f1\i0 \cf2 ));\
+\
+        \cf9 //THEN\
+        \cf2 response.andExpect(MockMvcResultMatchers.
+\f2\i status
+\f1\i0 ().isNoContent());\
+        response.andDo(MockMvcResultHandlers.
+\f2\i print
+\f1\i0 ());\
+\
+\
+        Query q = \cf5 new \cf2 Query();\
+\
+        q.addCriteria(Criteria.
+\f2\i where
+\f1\i0 (\cf8 "Id"\cf2 ).is(p.getId()));\
+        Long productCount = \cf7 mongoTemplate\cf2 .count(q,Product.\cf5 class\cf2 );\
+\
+        Assertions.
+\f2\i assertEquals
+\f1\i0 (\cf10 0\cf2 ,productCount);\
+\
+\
+    \}\
+\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb1 \
+\
+\
+}

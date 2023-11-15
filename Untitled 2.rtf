@@ -1,0 +1,276 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 Times-Bold;
+\f3\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red37\green95\blue166;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c18039\c45490\c70980;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf2 \expnd0\expndtw0\kerning0
+The goal of this first assignment is to develop the backbone of a microservices-based social media platform named "SpringSocial." By the end of this assignment, you and your team should have a running social media platform with foundational features like creating posts, commenting, and managing friend requests. 
+\fs37\fsmilli18667 \cf3 \
+Instructions and Requirements
+\f1\fs32 :\uc0\u8232 
+\f0\fs26\fsmilli13333 \cf2 Below you will find the assignment requirements have been broken up for you to more easily digest. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b\fs32 \cf2 Environment Setup and Basic RESTful Service 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 Objective: 
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf2 Familiarize yourself with the tools, technologies, and foundational concepts required for building a robust microservices system. Start by setting up your development environment and understanding the basic constructs of Spring and Microservices. 
+\f1\fs24 \
+
+\f0\fs26\fsmilli13333 Design the backbone of your social media platform by developing RESTful services. Learn how to containerize these services, ensuring they're scalable and deployable. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 Environment Setup: 
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf2 Download and install the necessary software specifically: 
+\f1\fs24 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa266\partightenfactor0
+\ls1\ilvl0
+\f0\fs26\fsmilli13333 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Java 
+\f1 \uc0\u8232 \
+\ls1\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Gradle, 
+\f1 \uc0\u8232 \
+\ls1\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Docker / Docker Desktop 
+\f1 \uc0\u8232 \
+\ls1\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+MongoDB (docker container) 
+\f1 \uc0\u8232 \
+\ls1\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Spring Boot. 
+\f1 \uc0\u8232 
+\f0 Familiarize yourself with the Spring Initializr tool and prepare to set up your Spring Boot projects. 
+\f1 \uc0\u8232 
+\f0\fs29\fsmilli14667 \cf3 Building the SpringSocial Application: 
+\f1\fs26\fsmilli13333 \cf2 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa266\partightenfactor0
+\ls2\ilvl0
+\f0 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Use Spring Initializr to create your SpringSocial, Spring Boot application. 
+\f1 \uc0\u8232 \
+\ls2\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Use a microservice based approach and design to your solution. 
+\f1 \uc0\u8232 \
+\ls2\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Your solution and design must take into account three primary entities for the social media 
+\f1 \uc0\u8232 
+\f0 platform, namely 
+\f3 o 
+\f0 User\uc0\u8232 
+\f3 o 
+\f0 Post 
+\f1 \uc0\u8232 
+\f3 o 
+\f0 Comment 
+\f1 \uc0\u8232 \
+\ls2\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+For each entity, expose CRUD operations through RESTful endpoints. 
+\f1 \uc0\u8232 \
+\ls2\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Integrate MongoDB as the database for the Post entity. This will give you flexibility in terms of 
+\f1 \uc0\u8232 
+\f0 the data schema. 
+\f1 \uc0\u8232 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 Page 
+\f2\b 1 
+\f0\b0 of 
+\f2\b 6 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 Testing & Containerization: 
+\f1\fs24 \cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa266\partightenfactor0
+\ls3\ilvl0
+\f0\fs26\fsmilli13333 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Write integration tests for your RESTful endpoints. 
+\f1 \uc0\u8232 \
+\ls3\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Containerize your application using Docker. This will make your application portable and ensure 
+\f1 \uc0\u8232 
+\f0 it runs consistently across different environments. 
+\f1 \uc0\u8232 \
+\ls3\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Dive into Docker Compose to manage multi-container applications. This will be crucial as you 
+\f1 \uc0\u8232 
+\f0 expand the microservices in your platform. 
+\f1 \uc0\u8232 \
+\ls3\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Integrate TestContainers in your testing strategy for real-time testing with Docker containers. 
+\f1 \uc0\u8232 \
+\ls3\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Remember for this course we primarily want to use containers, and for your assignment solution 
+\f1 \uc0\u8232 
+\f0 you need to create a containerized environment as demonstrated in class. Your containerized environment is the only environment that should be demonstrated in your assignment video. 
+\f1 \uc0\u8232 
+\f2\b\fs37\fsmilli18667 Database Integration & Relationships 
+\f1\b0\fs26\fsmilli13333 \uc0\u8232 
+\f0\fs29\fsmilli14667 \cf3 Objective: 
+\f1\fs26\fsmilli13333 \cf2 \uc0\u8232 
+\f0 Set up a robust data layer for your platform. Learn how to define and manipulate data entities and understand their relationships, ensuring data integrity and consistency. 
+\f1 \uc0\u8232 
+\f0\fs29\fsmilli14667 \cf3 Relational Data Modeling: 
+\f1\fs26\fsmilli13333 \cf2 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa266\partightenfactor0
+\ls4\ilvl0
+\f0 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Introduce JPA in your project for the User and Comment entities. 
+\f1 \uc0\u8232 \
+\ls4\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Bootstrap some sample user data into your relational database. 
+\f1 \uc0\u8232 \
+\ls4\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Establish relationships between your entities: 
+\f1 \uc0\u8232 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f3 \cf2 o 
+\f0 A User can have multiple Posts.\uc0\u8232 
+\f3 o 
+\f0 A Post can have multiple Comments. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b\fs37\fsmilli18667 \cf2 Inter-Service Communication 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 Objective: 
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs26\fsmilli13333 \cf2 Ensure your microservices communicate efficiently. Whether they're exchanging data or requesting operations, the communication should be swift, efficient, and fault-tolerant. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf3 Building the Friendship Service: 
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \'95 
+\f0 Develop a new microservice named "Friendship Service" to manage user friendships. This service should handle friend requests and their approvals. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 Page 
+\f2\b 2 
+\f0\b0 of 
+\f2\b 6 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs37\fsmilli18667 \cf3 Deliverables: 
+\f1\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \'95 
+\f0 A 
+\f2\b private 
+\f0\b0 git repository containing all your code, properly documented.
+\f1\fs24 \
+
+\fs29\fsmilli14667 \'95 
+\f0 A docker compose file to launch the entire system.\uc0\u8232 
+\f3 o 
+\f0 Make sure all components of your solution are containerized in docker.\uc0\u8232 
+\f3 o 
+\f0 I will be running your docker compose file to test your system 
+\f2\b exclusively
+\f0\b0 . I will 
+\f2\b NOT 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 run your solution environment in any other way, so you must make sure your docker 
+\f1\fs24 \
+
+\f0\fs29\fsmilli14667 compose brings up your entire working environment correctly.\uc0\u8232 
+\f3 o 
+\f0 Please note: If I cannot run your docker compose, you will 
+\f2\b lose 
+\f0\b0 marks 
+\f1\fs24 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa293\partightenfactor0
+\ls5\ilvl0
+\f0\fs29\fsmilli14667 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You 
+\f2\b must 
+\f0\b0 demonstrate in your video recording, both running and brining up your docker- compose environment. This is the principal environment, and only environment that should be utilized during the demonstration. 
+\f1 \uc0\u8232 \
+\ls5\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A Postman export collection, for each microservice, to showcase and tests of the various endpoints of your application. Each collection should be committed to your code repository. Keep each postman collection for each service, separated, specifically in their own folder, within the microservice project that the postman collection applies to. 
+\f1 \uc0\u8232 \
+\ls5\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+A brief report explaining the architecture, challenges faced, and lessons learned. 
+\f1 \uc0\u8232 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f3 \cf2 o 
+\f0 Include this in a parent folder of your project. 
+\f1\fs24 \
+
+\fs29\fsmilli14667 \'95 
+\f2\b Please review the final page (below) for submission guidelines 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs37\fsmilli18667 \cf3 Evaluation Criteria: 
+\f1\fs24 \cf2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa293\partightenfactor0
+\ls6\ilvl0
+\f0\fs29\fsmilli14667 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Code Quality: Clear, readable, and maintainable code. 
+\f1 \uc0\u8232 \
+\ls6\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Functionality: All described features should be implemented and working. 
+\f1 \uc0\u8232 \
+\ls6\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Robustness: Proper error handling and usage of the Circuit Breaker pattern. 
+\f1 \uc0\u8232 \
+\ls6\ilvl0
+\f0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Documentation: Both in-code comments and the accompanying report. 
+\f1 \uc0\u8232 \
+}
